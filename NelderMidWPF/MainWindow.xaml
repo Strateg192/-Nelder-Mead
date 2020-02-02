@@ -1,0 +1,155 @@
+﻿<Window x:Class="NelderMidWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NelderMidWPF"
+        mc:Ignorable="d"
+        Title="Метод Нелдера-Мида" Height="450" Width="800">
+    <Grid TextBlock.FontSize="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60">
+            </RowDefinition>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+            <Button Name="btEnterFunc" Width="80" Click="btEnterFunc_Click" Margin="5 0 0 0">
+                <TextBlock TextWrapping="Wrap">
+                Ввести функцию
+                </TextBlock>
+            </Button>
+            <Button Name="btSaveData" Width="80" Click="btSaveData_Click" Margin="5 0 0 0">
+                <TextBlock TextWrapping="Wrap">
+                Сохранить данные
+                </TextBlock>
+            </Button>
+            <Button Name="btLoadData" Width="80" Click="btLoadData_Click" Margin="5 0 0 0">
+                <TextBlock TextWrapping="Wrap">
+                Загрузить данные
+                </TextBlock>
+            </Button>
+            <Label VerticalContentAlignment="Center">
+                Число знаков после запятой:
+            </Label>
+            <ComboBox Name="cbCountSymbols" Margin="0 0 0 0" Height="30" Width="50" SelectedIndex="5">
+                <ComboBoxItem>0</ComboBoxItem>
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>7</ComboBoxItem>
+                <ComboBoxItem>8</ComboBoxItem>
+                <ComboBoxItem>9</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>11</ComboBoxItem>
+                <ComboBoxItem>12</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <Button Grid.Row="0"  HorizontalAlignment="Right" Height="29" Width="29" Margin="0 0 5 0" Click="Button_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Ellipse Fill="#0E51A8">
+                            
+                        </Ellipse>
+                        <TextBlock FontSize="29" TextAlignment="Center" Margin="0 -7 0 0" Foreground="#FFFFFF">
+                                ?
+                        </TextBlock>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <StackPanel Name="spOptions" Grid.Row="1" Orientation="Horizontal">
+            <Label VerticalContentAlignment="Center">
+                <Label.ToolTip>
+                    Максимальное допустимое количество итераций
+                </Label.ToolTip>
+                <Label.Content>
+                    MaxK:
+                </Label.Content>
+            </Label>
+            <TextBox Name="tbMaxK" VerticalContentAlignment="Center" Width="50" Text="1000" Margin="0 7"></TextBox>
+            <Label VerticalContentAlignment="Center">
+                <Label.ToolTip>
+                    Передельное значение длины ребра симплекса
+                </Label.ToolTip>
+                <Label.Content>
+                    ε:
+                </Label.Content>
+            </Label>
+            <TextBox Name="tbEpsilon" VerticalContentAlignment="Center" Width="50" Text="0,0001" Margin="0 7"></TextBox>
+            <Label VerticalContentAlignment="Center">
+                <Label.ToolTip>
+                    Начальная длина ребра симплекса
+                </Label.ToolTip>
+                <Label.Content>
+                    λ:
+                </Label.Content>
+            </Label>
+            <TextBox Name="tbLambda" VerticalContentAlignment="Center" Width="50" Text="1,0" Margin="0 7"></TextBox>
+            <Label VerticalContentAlignment="Center">
+                <Label.Content>
+                    α:
+                </Label.Content>
+                <Label.ToolTip>
+                    Коэффициент отражения симплекса
+                </Label.ToolTip>
+            </Label>
+            <TextBox Name="tbAlpha" VerticalContentAlignment="Center" Width="50" Text="2" Margin="0 7"></TextBox>
+            <Label VerticalContentAlignment="Center">
+                <Label.Content>
+                    β:
+                </Label.Content>
+                <Label.ToolTip>
+                    Коэффициент сжатия симплекса
+                </Label.ToolTip>
+            </Label>
+            <TextBox Name="tbBeta" VerticalContentAlignment="Center" Width="50" Text="0,5" Margin="0 7"></TextBox>
+            <Label VerticalContentAlignment="Center">
+                <Label.Content>
+                    γ:
+                </Label.Content>
+                <Label.ToolTip>
+                    Коэффициент растяжения симплекса
+                </Label.ToolTip>
+            </Label>
+            <TextBox Name="tbGamma" VerticalContentAlignment="Center" Width="50" Text="2,5" Margin="0 7"></TextBox>
+            <Label VerticalContentAlignment="Center">
+                <Label.ToolTip>
+                    Коэффициент редукции симплекса
+                </Label.ToolTip>
+                <Label.Content>
+                    cR:
+                </Label.Content>
+            </Label>
+            <TextBox Name="tbCR" VerticalContentAlignment="Center" Width="50" Text="0,5" Margin="0 7" IsEnabled="False"></TextBox>
+        </StackPanel>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Label VerticalContentAlignment="Center">Функция:</Label>
+                <Label VerticalContentAlignment="Center" Width="400">
+                    <TextBlock Name="textBlockEnteredFunc" TextWrapping="Wrap" TextAlignment="Center">
+                        
+                    </TextBlock>
+                </Label>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="5 0">
+                <Label HorizontalAlignment="Center">Координаты начальной точки</Label>
+                <StackPanel Name="spKoordinates" Orientation="Horizontal">
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="0">
+                <Button Name="btCalculate" HorizontalAlignment="Right" Width="90" Height="45" Click="btCalculate_Click"
+                        Margin="0 0 5 5">Вычислить</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

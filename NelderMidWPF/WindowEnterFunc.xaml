@@ -1,0 +1,41 @@
+﻿<Window x:Class="NelderMidWPF.WindowEnterFunc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NelderMidWPF"
+        mc:Ignorable="d"
+        Title="Ввод функции" Height="450" Width="800">
+    <Grid TextBlock.FontSize="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            Введите функцию:
+        </Label>
+        <TextBox Name="tbEnterFunc" Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" 
+                 TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"
+                 Text="(1-x1)^2+100*(x2-x1^2)^2"></TextBox>
+        <Button Grid.Row="2" Grid.Column="0" Width="100" HorizontalAlignment="Left" Margin="10 0 0 5" Click="Button_Click">Отмена</Button>
+        <TextBlock Name="tbAllowSymbols" Grid.Row="1" Grid.Column="1"
+                 TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">
+            Допустимые символы<LineBreak/>
+            0-1<LineBreak/>
+            a-z<LineBreak/>
+            A-Z<LineBreak/>
+            Доступные операторы<LineBreak/>
+            +, -, *, /, ^<LineBreak/>
+            Доступные функции<LineBreak/>
+            ln<LineBreak/>
+            
+        </TextBlock>
+        <Button Name="btEnterFunc" Grid.Row="2" Grid.Column="1" Width="100" HorizontalAlignment="Right" 
+                Margin="0 0 10 5" Click="btEnterFunc_Click">Ввести</Button>
+    </Grid>
+</Window>
